@@ -1,7 +1,10 @@
 import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Tasks from "./components/Tasks";
 import Form from "./components/Form";
+import Footer from "./components/Footer";
+import About from "./components/About";
 
 export class App extends React.Component {
   constructor(props) {
@@ -27,7 +30,7 @@ export class App extends React.Component {
           reminder: true,
         },
       ],
-      showTasks: true,
+      showTasks: false,
     };
     this.handleDelete = this.handleDelete.bind(this);
     this.handleToggle = this.handleToggle.bind(this);
@@ -59,19 +62,25 @@ export class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <Header
-          title="Task Tracker"
-          onShow={() => this.setState({ showTasks: !this.state.showTasks })}
-          showStatus={this.state.showTasks}
-        />
-        {this.state.showTasks ? <Form onAdd={this.handleAdd} /> : ""}
-        <Tasks
-          tasks={this.state.tasks}
-          onDelete={this.handleDelete}
-          onToggle={this.handleToggle}
-        />
-      </div>
+      <Router>
+        <div className="App">
+          <Header
+            title="Task Tracker"
+            onShow={() => this.setState({ showTasks: !this.state.showTasks })}
+            showStatus={this.state.showTasks}
+          />
+          <Route exact={true} path="/">
+            {this.state.showTasks ? <Form onAdd={this.handleAdd} /> : ""}
+            <Tasks
+              tasks={this.state.tasks}
+              onDelete={this.handleDelete}
+              onToggle={this.handleToggle}
+            />
+          </Route>
+          <Route path="/about" component={About} />
+          <Footer />
+        </div>
+      </Router>
     );
   }
 }
