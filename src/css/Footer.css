@@ -1,0 +1,16 @@
+footer {
+  text-align: center;
+}
+
+.footer__paragraph {
+  margin: 20px 0 5px;
+}
+
+.link {
+  color: rgb(99, 99, 99);
+  text-decoration: none;
+}
+
+.link:hover {
+  color: black;
+}

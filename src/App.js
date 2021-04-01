@@ -1,10 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+
 import Header from "./components/Header";
 import Tasks from "./components/Tasks";
 import Form from "./components/Form";
-import Footer from "./components/Footer";
 import About from "./components/About";
+import Footer from "./components/Footer";
 
 export class App extends React.Component {
   constructor(props) {
@@ -13,28 +14,41 @@ export class App extends React.Component {
       tasks: [
         {
           id: 1,
-          text: "Testing Task1",
-          day: "Feb 1",
+          text: "food shopping 🍔",
+          day: "Feb 5th at 2:30pm",
           reminder: false,
         },
         {
           id: 2,
-          text: "Testing Task2",
-          day: "Feb 2",
+          text: "go to gym 🏋️‍♀️",
+          day: "Feb 8th at 5:32pm",
           reminder: true,
         },
         {
           id: 3,
-          text: "Testing Task3",
-          day: "Feb 3",
-          reminder: true,
+          text: "do the dishies 🧼",
+          day: "Feb 9th at 12:30pm",
+          reminder: false,
+        },
+        {
+          id: 4,
+          text: "take my dog walk 🐕",
+          day: "Feb 19th at 1:30pm",
+          reminder: false,
         },
       ],
       showTasks: false,
     };
+    this.handleAdd = this.handleAdd.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleToggle = this.handleToggle.bind(this);
-    this.handleAdd = this.handleAdd.bind(this);
+  }
+
+  handleAdd(newTask) {
+    const updatedTasks = this.state.tasks.concat(newTask);
+    this.setState({
+      tasks: updatedTasks,
+    });
   }
 
   handleDelete(id) {
@@ -53,19 +67,12 @@ export class App extends React.Component {
     });
   }
 
-  handleAdd(newTask) {
-    const updatedTasks = this.state.tasks.concat(newTask);
-    this.setState({
-      tasks: updatedTasks,
-    });
-  }
-
   render() {
     return (
       <Router>
-        <div className="App">
+        <div id="container">
           <Header
-            title="Task Tracker"
+            title="📝 To Do List"
             onShow={() => this.setState({ showTasks: !this.state.showTasks })}
             showStatus={this.state.showTasks}
           />

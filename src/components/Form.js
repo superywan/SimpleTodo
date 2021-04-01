@@ -1,4 +1,5 @@
 import React from "react";
+import "../css/Form.css";
 
 export class Form extends React.Component {
   constructor(props) {
@@ -23,28 +24,31 @@ export class Form extends React.Component {
   }
   render() {
     return (
-      <form className="add-form" onSubmit={this.onSubmit}>
-        <div className="form-control">
-          <label>Task</label>
+      <form className="form" onSubmit={this.onSubmit}>
+        <div className="form__component">
+          <label className="form__component--label">Task</label>
           <input
+            className="form__component--input"
             type="text"
             placeholder="Add Task"
             value={this.state.text}
             onChange={(event) => this.setState({ text: event.target.value })}
           />
         </div>
-        <div className="form-control">
-          <label>Day & Time</label>
+        <div className="form__component">
+          <label className="form__component--label">Day & Time</label>
           <input
+            className="form__component--input"
             type="text"
             placeholder="Add Day & Time"
             value={this.state.day}
             onChange={(event) => this.setState({ day: event.target.value })}
           />
         </div>
-        <div className="form-control form-control-check">
-          <label>Set Reminder</label>
+        <div className="form__component">
+          <labeli className="form__component--label">Set Reminder</labeli>
           <input
+            className="form__component--check"
             type="checkbox"
             checked={this.state.reminder}
             value={this.state.reminder}
@@ -53,7 +57,7 @@ export class Form extends React.Component {
             }
           />
         </div>
-        <input type="submit" value="Save Task" className="btn btn-block" />
+        <input type="submit" value="Save Task" className="form__submit" />
       </form>
     );
   }

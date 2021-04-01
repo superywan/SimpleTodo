@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
+import "../css/About.css";
 
 function About(props) {
   return (
-    <div>
-      <h4>This is Task Tracker!</h4>
-      <Link to="/">Go Back</Link>
+    <div className="about">
+      <h4 className="about--heading">Task Tracker built with React.js ⚛️</h4>
+      <Link className="about--link" to="/">
+        Go Back
+      </Link>
     </div>
   );
 }

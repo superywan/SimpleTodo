@@ -1,0 +1,18 @@
+.about {
+  background: white;
+  text-align: center;
+  padding: 50px 0;
+}
+
+.about--heading {
+  margin-top: 0;
+}
+
+.about--link {
+  color: rgb(99, 99, 99);
+  text-decoration: none;
+}
+
+.about--link:hover {
+  color: black;
+}
